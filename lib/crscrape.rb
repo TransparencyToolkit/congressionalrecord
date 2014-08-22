@@ -88,20 +88,20 @@ def loop(congress)
         digesthash[:date] = date
         digesthash[:type] = "Daily Digest"
         digesthash[:url] = "http://thomas.loc.gov"+digest[0]['href']
-        digesthash[:text] = Nokogiri::HTML("http://thomas.loc.gov"+digest[0]['href']).text
+        digesthash[:text] = Nokogiri::HTML(open("http://thomas.loc.gov"+digest[0]['href'])).text
         temparr.push(digesthash)
       elsif digest.length == 1
         digesthash = Hash.new
         digesthash[:date] = date
         digesthash[:type] = "Daily Digest"
         digesthash[:url] = "http://thomas.loc.gov"+digest[0]['href']
-        digesthash[:text] = Nokogiri::HTML("http://thomas.loc.gov"+digest[0]['href']).text
+        digesthash[:text] = Nokogiri::HTML(open("http://thomas.loc.gov"+digest[0]['href'])).text
         temparr.push(digesthash)
       end
     end
   end
 
-  puts JSON.pretty_generate(temparr)
+  return JSON.pretty_generate(temparr)
 end
 
 # Scrapes all items and collects them in one chunk of text
