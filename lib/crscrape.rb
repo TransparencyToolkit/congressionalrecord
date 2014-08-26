@@ -37,19 +37,13 @@ class Crscrape
           househash = Hash.new
           househash[:date] = date
           househash[:type] = "House"
-          #househash[:url] = "http://thomas.loc.gov"+house[0]['href']
-          #househash[:text] = 
           scrape("http://thomas.loc.gov"+house[0]['href'], househash)
-          #temparr.push(househash)
         elsif house.length == 1
           begin
             househash = Hash.new
             househash[:date] = date
             househash[:type] = "House"
-            #househash[:url] = "http://thomas.loc.gov"+house[0]['href']
-            #househash[:text] = 
             scrape("http://thomas.loc.gov"+house[0]['href'], househash)
-            #temparr.push(househash)
           rescue
           
           end
@@ -60,18 +54,12 @@ class Crscrape
           senatehash = Hash.new
           senatehash[:date] = date
           senatehash[:type] = "Senate"
-          #senatehash[:url] = "http://thomas.loc.gov"+senate[0]['href']
-          #senatehash[:text] = 
           scrape("http://thomas.loc.gov"+senate[0]['href'], senatehash)
-          #temparr.push(senatehash)
         elsif senate.length == 1
           senatehash = Hash.new
           senatehash[:date] = date
           senatehash[:type] = "Senate"
-          #senatehash[:url] = "http://thomas.loc.gov"+senate[0]['href']
-          #senatehash[:text] = 
           scrape("http://thomas.loc.gov"+senate[0]['href'], senatehash)
-          #temparr.push(senatehash)
         end
     
         extensions = r.css("td")[index[:extensions]].css("a")
@@ -79,18 +67,12 @@ class Crscrape
           extensionhash = Hash.new
           extensionhash[:date] = date
           extensionhash[:type] = "Extension of Remarks"
-          #extensionhash[:url] = "http://thomas.loc.gov"+extensions[0]['href']
-          #extensionhash[:text] = 
           scrape("http://thomas.loc.gov"+extensions[0]['href'], extensionhash)
-          #temparr.push(extensionhash)
         elsif extensions.length == 1
           extensionhash = Hash.new
           extensionhash[:date] = date
           extensionhash[:type] = "Extension of Remarks"
-          #extensionhash[:url] = "http://thomas.loc.gov"+extensions[0]['href']
-          #extensionhash[:text] = 
           scrape("http://thomas.loc.gov"+extensions[0]['href'], extensionhash)
-          #temparr.push(extensionhash)
         end
 
         digest = r.css("td")[index[:digest]].css("a")
@@ -101,7 +83,6 @@ class Crscrape
           digesthash[:url] = "http://thomas.loc.gov"+digest[0]['href']
           digesthash[:text] = Nokogiri::HTML(open("http://thomas.loc.gov"+digest[0]['href'])).text
           @outarr.push(digesthash)
-          #temparr.push(digesthash)
         elsif digest.length == 1
           digesthash = Hash.new
           digesthash[:date] = date
@@ -109,7 +90,6 @@ class Crscrape
           digesthash[:url] = "http://thomas.loc.gov"+digest[0]['href']
           digesthash[:text] = Nokogiri::HTML(open("http://thomas.loc.gov"+digest[0]['href'])).text
           @outarr.push(digesthash)
-          #temparr.push(digesthash)
         end
       end
     end
@@ -133,13 +113,11 @@ class Crscrape
             itemhash[:text] = Nokogiri::HTML(open(link)).text
             
             @outarr.push(itemhash)
-            #text = text + Nokogiri::HTML(open(link)).text
           rescue
           end
         end
       end
     end
     
-    #return text
   end
 end
