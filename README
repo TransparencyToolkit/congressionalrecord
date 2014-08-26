@@ -1,1 +1,4 @@
-A script for scraping the congressional record. To call, load into file and run loop(congressnumber).
+A script for scraping the congressional record. To call-
+1. load 'crscrape.rb'
+2. Create a new object: c = Crscrape.new
+3. Run c.loop("congressnumber")
